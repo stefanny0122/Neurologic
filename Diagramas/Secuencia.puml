@@ -1,0 +1,48 @@
+@startuml
+title NEUROLOGIC - Diagrama de Secuencia General
+autonumber
+actor Usuario
+boundary "Interfaz Web\nHTML/CSS/JavaScript" as UI
+control "Controlador de Juegos\n(TypeScript)" as Controller
+control "Gestor de Juegos" as GameService
+control "Validador de Respuestas" as Validator
+control "Gestor de Puntuación" as ScoreService
+control "Gestor de Progreso" as ProgressService
+database "Base de Datos" as DB
+
+Usuario -> UI: Abrir aplicación
+UI --> Usuario: Mostrar inicio y menú de minijuegos
+Usuario -> UI: Seleccionar minijuego y nivel
+UI -> Controller: solicitarJuego(tipo, nivel)
+Controller -> GameService: iniciarJuego(tipo, nivel)
+GameService -> GameService: seleccionar/generar reto
+GameService --> Controller: reto
+Controller --> UI: datos del reto
+UI --> Usuario: Mostrar reto
+
+loop Por cada ejercicio del minijuego
+  Usuario -> UI: Ingresar respuesta
+  UI -> Controller: enviarRespuesta(idReto, respuesta)
+  Controller -> Validator: validar(respuesta, solución)
+  Validator --> Controller: resultado de validación
+  alt Respuesta correcta
+    Controller -> ScoreService: calcularPuntos(acierto, tiempo, nivel)
+    ScoreService --> Controller: puntos obtenidos
+    Controller --> UI: acierto + puntos + retroalimentación
+  else Respuesta incorrecta
+    Controller --> UI: error + retroalimentación
+  end
+  UI --> Usuario: Mostrar resultado del ejercicio
+end
+
+Usuario -> UI: Finalizar o completar juego
+UI -> Controller: finalizarJuego(resumen)
+Controller -> ScoreService: calcularResultadoFinal()
+ScoreService --> Controller: puntaje final
+Controller -> ProgressService: registrarProgreso(usuario, juego, puntaje)
+ProgressService -> DB: Guardar intento, puntaje y fecha
+DB --> ProgressService: Confirmación
+ProgressService --> Controller: Progreso actualizado
+Controller --> UI: Resultado final y progreso
+UI --> Usuario: Mostrar resumen del juego
+@enduml

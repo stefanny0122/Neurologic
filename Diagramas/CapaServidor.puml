@@ -1,0 +1,42 @@
+@startuml
+title NEUROLOGIC - Subdiagrama de la Capa Backend
+left to right direction
+skinparam componentStyle uml2
+
+package "Backend - TypeScript" {
+  [Rutas API] as Routes
+  [Controlador de Juegos] as Controller
+  [Servicio de Minijuegos] as Games
+  [Generador de Retos] as Generator
+  [Validador de Respuestas] as Validator
+  [Servicio de Puntuación] as Scoring
+  [Servicio de Progreso] as Progress
+  [Repositorio de Usuarios] as UserRepo
+  [Repositorio de Retos] as ChallengeRepo
+  [Repositorio de Resultados] as ResultRepo
+}
+
+database "Base de Datos Relacional" as DB
+interface "Solicitudes HTTP/JSON" as HTTP
+
+HTTP --> Routes
+Routes --> Controller
+Controller --> Games : iniciar / obtener reto
+Games --> Generator : crear o seleccionar reto
+Controller --> Validator : comprobar respuesta
+Validator --> Scoring : resultado validado
+Controller --> Progress : guardar resultado
+Progress --> UserRepo
+Progress --> ResultRepo
+Games --> ChallengeRepo
+UserRepo --> DB
+ChallengeRepo --> DB
+ResultRepo --> DB
+
+note bottom of Generator
+  Tipos de reto:
+  - Operaciones matemáticas
+  - Razonamiento lógico
+  - Problemas matemáticos
+end note
+@enduml

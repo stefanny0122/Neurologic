@@ -1,0 +1,244 @@
+@startuml
+title Diagrama de Clases - NEUROLOGIC
+
+skinparam class {
+    BackgroundColor White
+    BorderColor Black
+    ArrowColor Black
+    FontSize 10
+}
+
+hide empty members
+left to right direction
+
+' ====== ENUMERACIONES ======
+enum EstadoIntento {
+    PENDIENTE
+    CORRECTO
+    INCORRECTO
+}
+
+enum TipoMinijuego {
+    OPERACIONES_MATEMATICAS
+    RAZONAMIENTO_LOGICO
+    SOLUCION_PROBLEMAS
+}
+
+enum NivelDificultad {
+    FACIL
+    INTERMEDIO
+    AVANZADO
+}
+
+' ====== INTERFACES PRINCIPALES ======
+
+interface GestorJuegos {
+    + iniciarMinijuego(idUsuario: String, tipo: TipoMinijuego): Minijuego
+    + obtenerReto(idMinijuego: String, nivel: Nivel): Reto
+    + finalizarMinijuego(idMinijuego: String): Resultado
+}
+
+interface ValidadorRespuestas {
+    + validarRespuesta(reto: Reto, respuesta: String): boolean
+}
+
+interface GestorProgreso {
+    + guardarResultado(resultado: Resultado): boolean
+    + consultarProgreso(idUsuario: String): List<Resultado>
+}
+
+' ====== CLASES PRINCIPALES ======
+
+class Usuario {
+    - idUsuario: String
+    - nombre: String
+    - correo: String
+    - contrasena: String
+    + iniciarSesion(correo: String, contrasena: String): boolean
+    + consultarProgreso(): List<Resultado>
+}
+
+class ServicioAutenticacion {
+    - usuarios: RepositorioUsuarios
+    + autenticar(correo: String, contrasena: String): Usuario
+    + cerrarSesion(idUsuario: String): boolean
+}
+
+class Minijuego {
+    - idMinijuego: String
+    - nombre: String
+    - descripcion: String
+    - tipo: TipoMinijuego
+    + iniciar(): void
+    + finalizar(): Resultado
+}
+
+class Nivel {
+    - idNivel: String
+    - nombre: String
+    - dificultad: NivelDificultad
+    - cantidadRetos: int
+    + cargarRetos(): List<Reto>
+    + verificarDesbloqueo(): boolean
+}
+
+class Reto {
+    - idReto: String
+    - enunciado: String
+    - respuestaCorrecta: String
+    - puntajeBase: int
+    + obtenerEnunciado(): String
+    + verificarRespuesta(respuesta: String): boolean
+}
+
+class RetoOperaciones {
+    - operacion: String
+    - numeroUno: double
+    - numeroDos: double
+    + calcularResultado(): double
+}
+
+class RetoLogico {
+    - tipoPatron: String
+    - elementos: List<String>
+    + evaluarSolucion(respuesta: String): boolean
+}
+
+class ProblemaMatematico {
+    - contexto: String
+    - datosProblema: String
+    - operacionRequerida: String
+    + resolverProblema(): String
+}
+
+class Intento {
+    - idIntento: String
+    - respuestaUsuario: String
+    - esCorrecto: boolean
+    - tiempoRespuesta: Long
+    - fecha: Date
+    + registrarIntento(): boolean
+}
+
+class Resultado {
+    - idResultado: String
+    - puntajeObtenido: int
+    - retosCorrectos: int
+    - retosIncorrectos: int
+    - tiempoTotal: Long
+    - fechaFinalizacion: Date
+    + calcularPuntaje(): int
+    + generarResumen(): String
+}
+
+class GestorPuntuacion {
+    + calcularPuntos(esCorrecto: boolean, tiempo: Long): int
+    + calcularPuntajeTotal(intentos: List<Intento>): int
+}
+
+class ServicioProgreso {
+    - repositorioResultados: RepositorioResultados
+    + guardar(resultado: Resultado): boolean
+    + obtenerHistorial(idUsuario: String): List<Resultado>
+}
+
+class ServidorAplicaciones {
+    - servicioAutenticacion: ServicioAutenticacion
+    - gestorJuegos: GestorJuegos
+    - validador: ValidadorRespuestas
+    - gestorProgreso: GestorProgreso
+    + procesarRespuesta(idReto: String, respuesta: String): boolean
+    + consultarResultados(idUsuario: String): List<Resultado>
+}
+
+' ====== CLASES DE APOYO ======
+
+class RepositorioUsuarios {
+    + buscarPorCorreo(correo: String): Usuario
+    + guardar(usuario: Usuario): boolean
+}
+
+class RepositorioResultados {
+    + guardar(resultado: Resultado): boolean
+    + consultarPorUsuario(idUsuario: String): List<Resultado>
+}
+
+' ====== IMPLEMENTACIONES ======
+
+class GestorJuegosImpl implements GestorJuegos {
+    + iniciarMinijuego(idUsuario: String, tipo: TipoMinijuego): Minijuego
+    + obtenerReto(idMinijuego: String, nivel: Nivel): Reto
+    + finalizarMinijuego(idMinijuego: String): Resultado
+}
+
+class ValidadorRespuestasImpl implements ValidadorRespuestas {
+    + validarRespuesta(reto: Reto, respuesta: String): boolean
+}
+
+class GestorProgresoImpl implements GestorProgreso {
+    + guardarResultado(resultado: Resultado): boolean
+    + consultarProgreso(idUsuario: String): List<Resultado>
+}
+
+' ====== RELACIONES PRINCIPALES ======
+
+ServidorAplicaciones --> ServicioAutenticacion
+ServidorAplicaciones --> GestorJuegos
+ServidorAplicaciones --> ValidadorRespuestas
+ServidorAplicaciones --> GestorProgreso
+
+ServicioAutenticacion --> RepositorioUsuarios
+Usuario "1" --> "0..*" Resultado : obtiene
+Usuario --> Minijuego : juega
+
+Minijuego "1" *-- "1..*" Nivel
+Nivel "1" *-- "1..*" Reto
+
+Reto <|-- RetoOperaciones
+Reto <|-- RetoLogico
+Reto <|-- ProblemaMatematico
+
+Minijuego --> TipoMinijuego
+Nivel --> NivelDificultad
+
+Usuario "1" --> "0..*" Intento
+Reto "1" --> "0..*" Intento
+Intento --> EstadoIntento
+Intento --> Resultado
+
+GestorJuegosImpl --> Minijuego
+GestorJuegosImpl --> Nivel
+GestorJuegosImpl --> Reto
+
+ValidadorRespuestasImpl --> Reto
+GestorPuntuacion --> Intento
+GestorPuntuacion --> Resultado
+
+GestorProgresoImpl --> RepositorioResultados
+RepositorioResultados --> Resultado
+
+note top of ServidorAplicaciones
+  <<Patrón Fachada>>
+  Coordina las funciones principales
+  de la aplicación.
+end note
+
+note right of Minijuego
+  Contiene los tres tipos:
+  operaciones matemáticas,
+  razonamiento lógico y
+  solución de problemas.
+end note
+
+note bottom of Resultado
+  Registra el puntaje,
+  los aciertos, los errores
+  y el tiempo empleado.
+end note
+
+note left of Reto
+  Clase base de los retos
+  de los tres minijuegos.
+end note
+
+@enduml

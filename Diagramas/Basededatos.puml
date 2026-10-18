@@ -1,0 +1,69 @@
+@startuml
+title NEUROLOGIC - Modelo de Base de Datos
+hide circle
+skinparam linetype ortho
+
+entity "USUARIO" as usuario {
+  * id_usuario : INT <<PK>>
+  --
+  nombre : VARCHAR
+  correo : VARCHAR
+  fecha_registro : DATETIME
+}
+
+entity "MINIJUEGO" as minijuego {
+  * id_minijuego : INT <<PK>>
+  --
+  nombre : VARCHAR
+  descripcion : TEXT
+}
+
+entity "NIVEL" as nivel {
+  * id_nivel : INT <<PK>>
+  --
+  id_minijuego : INT <<FK>>
+  nombre : VARCHAR
+  dificultad : INT
+}
+
+entity "RETO" as reto {
+  * id_reto : INT <<PK>>
+  --
+  id_nivel : INT <<FK>>
+  tipo_reto : VARCHAR
+  enunciado : TEXT
+  solucion : VARCHAR
+  puntaje_base : INT
+}
+
+entity "INTENTO" as intento {
+  * id_intento : INT <<PK>>
+  --
+  id_usuario : INT <<FK>>
+  id_reto : INT <<FK>>
+  fecha : DATETIME
+  respuesta : VARCHAR
+  es_correcta : BOOLEAN
+  tiempo_segundos : INT
+  puntos_obtenidos : INT
+}
+
+entity "RESULTADO_JUEGO" as resultado {
+  * id_resultado : INT <<PK>>
+  --
+  id_usuario : INT <<FK>>
+  id_minijuego : INT <<FK>>
+  fecha : DATETIME
+  puntaje_total : INT
+  aciertos : INT
+  errores : INT
+  duracion_segundos : INT
+}
+
+usuario ||--o{ intento : realiza
+reto ||--o{ intento : recibe
+minijuego ||--|{ nivel : contiene
+nivel ||--o{ reto : agrupa
+usuario ||--o{ resultado : obtiene
+minijuego ||--o{ resultado : genera
+@enduml

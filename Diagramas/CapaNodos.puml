@@ -1,0 +1,32 @@
+@startuml
+title NEUROLOGIC - Diagrama de Despliegue y Nodos
+left to right direction
+skinparam componentStyle uml2
+
+node "Dispositivo del usuario\nPC / Tablet / Móvil" as Client {
+  artifact "Navegador Web" as Browser
+  component "Frontend\nHTML + CSS + JavaScript" as Frontend
+  Browser -- Frontend
+}
+
+node "Servidor de Aplicación" as AppServer {
+  artifact "Backend TypeScript" as Backend
+  component "API / Controladores" as API
+  component "Servicios de Juegos" as Games
+  component "Validación y Puntuación" as Logic
+  Backend -- API
+  API -- Games
+  Games -- Logic
+}
+
+database "Servidor de Base de Datos\nMotor por definir" as DB
+
+Frontend --> API : HTTPS / JSON
+Logic --> DB : consultas y persistencia
+note bottom of Games
+  Los servicios gestionan:
+  1. Operaciones matemáticas
+  2. Razonamiento lógico
+  3. Solución de problemas
+end note
+@enduml

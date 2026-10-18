@@ -1,0 +1,38 @@
+@startuml
+title NEUROLOGIC - Subdiagrama de la Capa Frontend
+left to right direction
+skinparam componentStyle uml2
+
+package "Frontend - HTML / CSS / JavaScript" {
+  [Pantalla de Inicio] as Home
+  [Menú de Minijuegos] as Menu
+  [Pantalla de Juego] as GameUI
+  [Selector de Nivel] as LevelUI
+  [Entrada de Respuesta] as AnswerUI
+  [Retroalimentación] as Feedback
+  [Pantalla de Resultados] as Results
+  [Vista de Progreso] as Progress
+  [Cliente API / Fetch] as API
+  [Gestor de Estado de Interfaz] as State
+}
+
+interface "API REST" as RestAPI
+
+Home --> Menu : navegar
+Menu --> LevelUI : elegir juego
+LevelUI --> GameUI : iniciar
+GameUI --> AnswerUI : responder
+AnswerUI --> Feedback : mostrar validación
+Feedback --> GameUI : siguiente reto
+GameUI --> Results : finalizar
+Results --> Progress : consultar avance
+Menu --> API : solicitar reto
+AnswerUI --> API : enviar respuesta
+Results --> API : enviar resumen
+Progress --> API : consultar historial
+State ..> Home
+State ..> GameUI
+State ..> Feedback
+State ..> Results
+API ..> RestAPI : HTTP/JSON
+@enduml
