@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NEUROLOGIC, aplicación educativa para fortalecer habilidades matemáticas.">
+    <title>Inicio | NEUROLOGIC</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/inicio.css">
+</head>
+<body>
+    <div class="app-layout">
+
+        <aside class="sidebar">
+            <a href="index.html" class="brand">
+                <div class="brand-icon">
+    <img src="assets/img/logo-neurologic.png" alt="Logo de NEUROLOGIC">
+</div>
+                <div>
+                    <span class="brand-name">NEUROLOGIC</span>
+                    <span class="brand-subtitle">Aprender jugando</span>
+                </div>
+            </a>
+
+            <p class="menu-label">MENÚ PRINCIPAL</p>
+
+            <nav class="navigation">
+                <a href="index.html" class="nav-link active">
+                    <span>🏠</span> Inicio
+                </a>
+                <a href="pages/juegos.html" class="nav-link">
+                    <span>🎮</span> Mis juegos
+                </a>
+                <a href="pages/estadisticas.html" class="nav-link">
+                    <span>📊</span> Estadísticas
+                </a>
+                <a href="pages/perfil.html" class="nav-link">
+                    <span>👤</span> Mi perfil
+                </a>
+                <a href="pages/configuracion.html" class="nav-link">
+                    <span>⚙️</span> Configuración
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="help-icon">💡</div>
+                <strong>¡Tú puedes lograrlo!</strong>
+                <p>Cada actividad es una nueva oportunidad para aprender.</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">TU ESPACIO DE APRENDIZAJE</p>
+                    <h1>¡Hola! 👋</h1>
+                </div>
+                <a href="pages/perfil.html" class="profile-button">
+                    <span class="avatar">👤</span>
+                    <span>Mi perfil</span>
+                </a>
+            </header>
+
+            <section class="welcome-banner">
+                <div class="welcome-text">
+                    <span class="welcome-tag">🌟 APRENDE A TU RITMO</span>
+                    <h2>¡Las matemáticas pueden ser divertidas!</h2>
+                    <p>
+                        Explora juegos, resuelve desafíos y descubre
+                        todo lo que eres capaz de aprender.
+                    </p>
+                    <a href="pages/juegos.html" class="primary-button">
+                        Explorar juegos <span>→</span>
+                    </a>
+                </div>
+
+                <div class="welcome-illustration" aria-hidden="true">
+                    <span class="math-symbol symbol-plus">+</span>
+                    <span class="math-symbol symbol-equal">=</span>
+                    <span class="math-symbol symbol-star">★</span>
+                    <div class="number-card">1 + 2 = 3</div>
+                    <div class="smile-face">😊</div>
+                </div>
+            </section>
+
+            <section class="section-block">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">DIVIÉRTETE Y APRENDE</p>
+                        <h2>Elige tu aventura</h2>
+                    </div>
+                    <a href="pages/juegos.html" class="text-link">
+                        Ver todos →
+                    </a>
+                </div>
+
+                <div class="game-grid">
+                    <article class="game-card operations-card">
+                        <div class="game-image">
+                            <img
+                                src="assets/img/operaciones-matematicas.png"
+                                alt="Ilustración de operaciones matemáticas"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+                            >
+                            <div class="image-fallback">➕</div>
+                        </div>
+                        <div class="game-info">
+                            <span class="game-category">NÚMEROS Y CÁLCULO</span>
+                            <h3>Operaciones matemáticas</h3>
+                            <p>Resuelve sumas, restas, multiplicaciones y divisiones.</p>
+                            <a href="pages/operaciones-matematicas.html" class="game-button">
+                                Jugar ahora →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="game-card logic-card">
+                        <div class="game-image">
+                            <img
+                                src="assets/img/razonamiento-logico.png"
+                                alt="Ilustración de razonamiento lógico"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+                            >
+                            <div class="image-fallback">🧩</div>
+                        </div>
+                        <div class="game-info">
+                            <span class="game-category">PIENSA Y DESCUBRE</span>
+                            <h3>Razonamiento lógico</h3>
+                            <p>Encuentra patrones, reconoce figuras y resuelve acertijos.</p>
+                            <a href="pages/razonamiento-logico.html" class="game-button">
+                                Jugar ahora →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="game-card problems-card">
+                        <div class="game-image">
+                            <img
+                                src="assets/img/solucion-problemas.png"
+                                alt="Ilustración de solución de problemas matemáticos"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+                            >
+                            <div class="image-fallback">💡</div>
+                        </div>
+                        <div class="game-info">
+                            <span class="game-category">RETOS COTIDIANOS</span>
+                            <h3>Solución de problemas</h3>
+                            <p>Usa las matemáticas para resolver situaciones de la vida diaria.</p>
+                            <a href="pages/solucion-problemas.html" class="game-button">
+                                Jugar ahora →
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <footer class="page-footer">
+                <p>NEUROLOGIC · Aprende, juega y progresa 💙</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/navegacion.js"></script>
+</body>
+</html>

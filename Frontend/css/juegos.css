@@ -1,0 +1,125 @@
+
+.games-intro {
+    padding: 28px;
+    border-radius: 22px;
+    background: linear-gradient(120deg, #e9f1ff, #f0eaff);
+    margin-bottom: 30px;
+}
+
+.games-intro h2 {
+    color: var(--navy);
+    font-size: 25px;
+    font-weight: 900;
+    margin: 0 0 8px;
+}
+
+.games-intro > p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.level-summary {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-top: 22px;
+    padding: 15px;
+    max-width: 390px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.level-summary-icon {
+    display: grid;
+    place-items: center;
+    width: 43px;
+    height: 43px;
+    border-radius: 13px;
+    background: white;
+    font-size: 23px;
+}
+
+.level-summary strong,
+.level-summary span {
+    display: block;
+}
+
+.level-summary strong {
+    color: var(--navy);
+    font-size: 13px;
+}
+
+.level-summary span {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.all-games {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.all-games .game-image {
+    height: 205px;
+}
+
+.all-games .game-info {
+    padding: 23px;
+}
+
+.all-games .game-info h3 {
+    font-size: 20px;
+}
+
+.all-games .game-info p {
+    min-height: 65px;
+}
+
+.game-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.game-meta span {
+    padding: 7px 9px;
+    border-radius: 9px;
+    background: #f3f6fc;
+    color: #65758e;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+@media (min-width: 1400px) {
+    .all-games {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 950px) {
+    .all-games {
+        grid-template-columns: 1fr;
+    }
+
+    .all-games .game-image {
+        height: 190px;
+    }
+}
+
+@media (max-width: 600px) {
+    .games-intro {
+        padding: 22px;
+    }
+
+    .games-intro h2 {
+        font-size: 22px;
+    }
+
+    .all-games .game-info {
+        padding: 18px;
+    }
+}

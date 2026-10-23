@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis juegos | NEUROLOGIC</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/juegos.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <a href="../index.html" class="brand">
+                <div class="brand-icon">
+                    <img src="../assets/img/logo-neurologic.png" alt="Logo NEUROLOGIC">
+                </div>
+                <div>
+                    <span class="brand-name">NEUROLOGIC</span>
+                    <span class="brand-subtitle">Aprender jugando</span>
+                </div>
+            </a>
+
+            <p class="menu-label">MENÚ PRINCIPAL</p>
+            <nav class="navigation">
+                <a href="../index.html" class="nav-link"><span>🏠</span> Inicio</a>
+                <a href="juegos.html" class="nav-link active"><span>🎮</span> Mis juegos</a>
+                <a href="estadisticas.html" class="nav-link"><span>📊</span> Estadísticas</a>
+                <a href="perfil.html" class="nav-link"><span>👤</span> Mi perfil</a>
+                <a href="configuracion.html" class="nav-link"><span>⚙️</span> Configuración</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="help-icon">💡</div>
+                <strong>¡Tú puedes lograrlo!</strong>
+                <p>Cada actividad es una nueva oportunidad para aprender.</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">EXPLORA Y DIVIÉRTETE</p>
+                    <h1>Mis juegos 🎮</h1>
+                </div>
+                <a href="perfil.html" class="profile-button">
+                    <span class="avatar">👤</span>
+                    <span>Mi perfil</span>
+                </a>
+            </header>
+
+            <section class="games-intro">
+                <h2>¿Qué aventura quieres comenzar?</h2>
+                <p>Elige un minijuego, supera sus desafíos y avanza a tu propio ritmo.</p>
+                <div class="level-summary">
+                    <div class="level-summary-icon">🏆</div>
+                    <div>
+                        <strong>20 niveles por minijuego</strong>
+                        <span>¡Hay muchos desafíos esperándote!</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="all-games">
+                <article class="game-card operations-card">
+                    <div class="game-image">
+                        <img src="../assets/img/operaciones-matematicas.png"
+                             alt="Operaciones matemáticas"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                        <div class="image-fallback">➕</div>
+                    </div>
+                    <div class="game-info">
+                        <span class="game-category">NÚMEROS Y CÁLCULO</span>
+                        <h3>Operaciones matemáticas</h3>
+                        <p>Practica sumas, restas, multiplicaciones y divisiones mediante retos de dificultad progresiva.</p>
+                        <div class="game-meta">
+                            <span>🎯 20 niveles</span>
+                            <span>📝 10 preguntas por nivel</span>
+                        </div>
+                        <a class="game-button" href="operaciones-matematicas.html">Ver niveles →</a>
+                    </div>
+                </article>
+
+                <article class="game-card logic-card">
+                    <div class="game-image">
+                        <img src="../assets/img/razonamiento-logico.png"
+                             alt="Razonamiento lógico"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                        <div class="image-fallback">🧩</div>
+                    </div>
+                    <div class="game-info">
+                        <span class="game-category">PIENSA Y DESCUBRE</span>
+                        <h3>Razonamiento lógico</h3>
+                        <p>Descubre patrones, relaciona figuras, identifica colores y resuelve desafíos visuales.</p>
+                        <div class="game-meta">
+                            <span>🎯 20 niveles</span>
+                            <span>📝 10 preguntas por nivel</span>
+                        </div>
+                        <a class="game-button" href="razonamiento-logico.html">Ver niveles →</a>
+                    </div>
+                </article>
+
+                <article class="game-card problems-card">
+                    <div class="game-image">
+                        <img src="../assets/img/solucion-problemas.png"
+                             alt="Solución de problemas matemáticos"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                        <div class="image-fallback">💡</div>
+                    </div>
+                    <div class="game-info">
+                        <span class="game-category">RETOS COTIDIANOS</span>
+                        <h3>Solución de problemas matemáticos</h3>
+                        <p>Resuelve situaciones cotidianas usando las operaciones matemáticas adecuadas.</p>
+                        <div class="game-meta">
+                            <span>🎯 20 niveles</span>
+                            <span>📝 10 preguntas por nivel</span>
+                        </div>
+                        <a class="game-button" href="solucion-problemas.html">Ver niveles →</a>
+                    </div>
+                </article>
+            </section>
+
+            <footer class="page-footer">
+                <p>NEUROLOGIC · Aprende, juega y progresa 💙</p>
+            </footer>
+        </main>
+    </div>
+  <script src="../js/app.js"></script>
+<script src="../js/juegos.js"></script>
+</body>
+</html>
