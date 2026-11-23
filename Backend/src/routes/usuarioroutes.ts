@@ -6,6 +6,7 @@ const router = Router();
 
 router.post("/registro", usuarioController.registrar);
 router.get("/perfil", autenticar, usuarioController.perfil);
+router.patch("/perfil", autenticar, usuarioController.actualizarPerfil);
 router.patch(
   "/cambiar-password",
   autenticar,

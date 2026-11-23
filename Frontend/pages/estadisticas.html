@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas | NEUROLOGIC</title>
+
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/estadisticas.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">
+                    <img src="../assets/img/logo-neurologic.png" alt="Logo NEUROLOGIC">
+                </div>
+                <div class="brand-text">
+                    <h2>NEUROLOGIC</h2>
+                    <p>Aprender jugando</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="../index.html" class="nav-link">
+                    <span>⌂</span> Inicio
+                </a>
+                <a href="juegos.html" class="nav-link">
+                    <span>🎮</span> Mis juegos
+                </a>
+                <a href="estadisticas.html" class="nav-link active">
+                    <span>📊</span> Estadísticas
+                </a>
+                <a href="perfil.html" class="nav-link">
+                    <span>👤</span> Mi perfil
+                </a>
+                <a href="configuracion.html" class="nav-link">
+                    <span>⚙</span> Configuración
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>¡Cada reto es una oportunidad para aprender!</p>
+            </div>
+        </aside>
+
+        <main class="main-content stats-page">
+            <header class="stats-header">
+                <div>
+                    <span class="eyebrow">TU PROGRESO</span>
+                    <h1>Mis estadísticas</h1>
+                    <p>Consulta tus avances y descubre cuánto has aprendido.</p>
+                </div>
+
+                <button id="refresh-stats" class="refresh-button" type="button">
+                    ↻ Actualizar
+                </button>
+            </header>
+
+            <section class="stats-welcome">
+                <div>
+                    <span class="welcome-label">🌟 ¡Sigue avanzando!</span>
+                    <h2>Cada respuesta cuenta</h2>
+                    <p>
+                        Practica, aprende de tus errores y supera nuevos retos
+                        matemáticos a tu propio ritmo.
+                    </p>
+                </div>
+                <div class="welcome-emoji" aria-hidden="true">🏆</div>
+            </section>
+
+            <section class="summary-grid">
+                <article class="summary-card">
+                    <div class="summary-icon purple">⭐</div>
+                    <div>
+                        <p>Puntos acumulados</p>
+                        <strong id="total-points">0</strong>
+                        <span>Puntaje acumulado en partidas</span>
+                    </div>
+                </article>
+
+                <article class="summary-card">
+                    <div class="summary-icon blue">📝</div>
+                    <div>
+                        <p>Preguntas respondidas</p>
+                        <strong id="total-questions">0</strong>
+                        <span>En tus partidas guardadas</span>
+                    </div>
+                </article>
+
+                <article class="summary-card">
+                    <div class="summary-icon green">🎯</div>
+                    <div>
+                        <p>Niveles completados</p>
+                        <strong id="total-levels">0</strong>
+                        <span>De 60 niveles disponibles</span>
+                    </div>
+                </article>
+
+                <article class="summary-card">
+                    <div class="summary-icon orange">📈</div>
+                    <div>
+                        <p>Precisión registrada</p>
+                        <strong id="accuracy">—</strong>
+                        <span>Aciertos sobre respuestas registradas</span>
+                    </div>
+                </article>
+            </section>
+
+            <section class="stats-layout">
+                <article class="stats-card performance-card">
+                    <div class="card-heading">
+                        <div>
+                            <h2>Rendimiento por minijuego</h2>
+                            <p>Resultados guardados en cada minijuego.</p>
+                        </div>
+                    </div>
+
+                    <div id="game-performance" class="game-performance">
+                        <p class="empty-message">Cargando estadísticas...</p>
+                    </div>
+                </article>
+
+                <article class="stats-card progress-card">
+                    <div class="card-heading">
+                        <div>
+                            <h2>Progreso general</h2>
+                            <p>Avance de los 60 niveles disponibles.</p>
+                        </div>
+                    </div>
+
+                    <div class="overall-progress">
+                        <div class="progress-circle" id="progress-circle">
+                            <div class="circle-inner">
+                                <strong id="overall-percentage">0%</strong>
+                                <span>Completado</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="progress-legend">
+                        <div>
+                            <span class="legend-dot completed-dot"></span>
+                            <span>Niveles completados</span>
+                            <strong id="completed-count">0</strong>
+                        </div>
+                        <div>
+                            <span class="legend-dot pending-dot"></span>
+                            <span>Niveles pendientes</span>
+                            <strong id="pending-count">60</strong>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="stats-card level-history-card">
+                <div class="card-heading history-heading">
+                    <div>
+                        <h2>Detalle de progreso</h2>
+                        <p>Consulta los puntajes de tus niveles completados.</p>
+                    </div>
+
+                    <select id="game-filter" aria-label="Filtrar por minijuego">
+                        <option value="all">Todos los minijuegos</option>
+                        <option value="operaciones">Operaciones Matemáticas</option>
+                        <option value="razonamiento">Razonamiento Lógico</option>
+                        <option value="problemas">Solución de Problemas</option>
+                    </select>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="progress-table">
+                        <thead>
+                            <tr>
+                                <th>Minijuego</th>
+                                <th>Nivel</th>
+                                <th>Mejor puntaje</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="progress-table-body">
+                            <tr>
+                                <td colspan="4" class="empty-message">
+                                    Cargando progreso...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="stats-note">
+                <span>ℹ️</span>
+                <p id="data-note">
+                    Las estadísticas se consultan desde tu cuenta y se guardan en la base de datos.
+                </p>
+            </section>
+
+            <a href="juegos.html" class="back-to-games">🎮 Seguir jugando</a>
+        </main>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/estadisticas.js"></script>
+</body>
+</html>
+```

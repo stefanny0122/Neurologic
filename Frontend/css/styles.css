@@ -475,3 +475,6 @@ a {
         transition: none !important;
     }
 }
+
+.logout-button{margin-top:auto;width:100%;padding:12px 14px;border:1px solid #f1dada;border-radius:12px;background:#fff5f5;color:#b84242;font:inherit;font-size:13px;font-weight:900;cursor:pointer;text-align:left}
+.logout-button:hover{background:#ffeaea}

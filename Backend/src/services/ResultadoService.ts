@@ -8,6 +8,7 @@ interface PreguntaPartida extends RowDataPacket {
   numero_pregunta: number;
   respuesta_correcta: string;
   puntos_base: number;
+  explicacion: string | null;
   respuesta_usuario: string | null;
   es_correcta: number | null;
   puntos_obtenidos: number | null;
@@ -85,7 +86,7 @@ export async function registrarRespuesta(datos: DatosRespuesta) {
 
     const [preguntas] = await conexion.execute<PreguntaPartida[]>(
       `SELECT id, partida_id, numero_pregunta, respuesta_correcta,
-              puntos_base, respuesta_usuario, es_correcta,
+              puntos_base, explicacion, respuesta_usuario, es_correcta,
               puntos_obtenidos, tiempo_respuesta_segundos
        FROM preguntas_partida
        WHERE partida_id = ? AND numero_pregunta = ?
@@ -157,6 +158,8 @@ export async function registrarRespuesta(datos: DatosRespuesta) {
       numeroPregunta,
       respuestaCorrecta: esCorrecta,
       puntosObtenidos: puntos,
+      explicacion: pregunta.explicacion,
+      respuestaCorrectaTexto: pregunta.respuesta_correcta,
       mensaje: esCorrecta
         ? "¡Respuesta correcta!"
         : "Respuesta incorrecta."

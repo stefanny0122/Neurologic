@@ -23,15 +23,16 @@ export async function crearPartida(
 }
 
 export async function buscarPartidaPorId(
-  id: number
+  id: number,
+  usuarioId: number
 ): Promise<Partida | null> {
   const [filas] = await pool.execute<Partida[]>(
     `SELECT id, usuario_id, minijuego_id, nivel, estado,
             puntaje_total, fecha_inicio, fecha_finalizacion
      FROM partidas
-     WHERE id = ?
+     WHERE id = ? AND usuario_id = ?
      LIMIT 1`,
-    [id]
+    [id, usuarioId]
   );
 
   return filas[0] ?? null;

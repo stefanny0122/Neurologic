@@ -28,6 +28,9 @@ export async function cambiarPassword(id, passwordActual, passwordNueva) {
     if (!usuario || !usuario.activo) {
         throw new AppError(404, "Usuario no encontrado o inactivo.");
     }
+    if (!usuario.password_hash) {
+        throw new AppError(400, "Esta cuenta no tiene una contraseña local configurada.");
+    }
     const actualValida = await bcrypt.compare(passwordActual, usuario.password_hash);
     if (!actualValida) {
         throw new AppError(401, "La contraseña actual es incorrecta.");

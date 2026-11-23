@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil | NEUROLOGIC</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/perfil.css">
+</head>
+<body>
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">
+                <img src="../assets/img/logo-neurologic.png" alt="Logo NEUROLOGIC">
+            </div>
+            <div class="brand-text">
+                <h2>NEUROLOGIC</h2>
+                <p>Aprender jugando</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="../index.html" class="nav-link"><span>⌂</span> Inicio</a>
+            <a href="juegos.html" class="nav-link"><span>🎮</span> Mis juegos</a>
+            <a href="estadisticas.html" class="nav-link"><span>📊</span> Estadísticas</a>
+            <a href="perfil.html" class="nav-link active"><span>👤</span> Mi perfil</a>
+            <a href="configuracion.html" class="nav-link"><span>⚙</span> Configuración</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>¡Cada reto es una oportunidad para aprender!</p>
+        </div>
+    </aside>
+
+    <main class="main-content profile-page">
+        <header class="profile-header">
+            <div>
+                <span class="profile-eyebrow">TU ESPACIO PERSONAL</span>
+                <h1>Mi perfil</h1>
+                <p>Administra tu información y consulta tus avances.</p>
+            </div>
+        </header>
+
+        <section class="profile-hero">
+            <div class="avatar" id="profile-avatar">😊</div>
+            <div class="profile-hero-info">
+                <span class="profile-tag">🌟 Usuario NEUROLOGIC</span>
+                <h2 id="profile-display-name">Mi usuario</h2>
+                <p id="profile-display-email">Agrega tu correo electrónico</p>
+                <button type="button" class="outline-button" id="edit-profile-button">
+                    ✏️ Editar perfil
+                </button>
+            </div>
+        </section>
+
+        <section class="profile-summary">
+            <article class="profile-summary-card">
+                <span>⭐</span>
+                <div><p>Puntos acumulados</p><strong id="profile-points">0</strong></div>
+            </article>
+            <article class="profile-summary-card">
+                <span>🏆</span>
+                <div><p>Niveles completados</p><strong id="profile-levels">0</strong></div>
+            </article>
+            <article class="profile-summary-card">
+                <span>🎮</span>
+                <div><p>Minijuegos disponibles</p><strong>3</strong></div>
+            </article>
+        </section>
+
+        <section class="profile-content-grid">
+            <article class="profile-card">
+                <div class="profile-card-heading">
+                    <h2>Información personal</h2>
+                    <span>👤</span>
+                </div>
+
+                <div class="profile-detail">
+                    <span>Nombre completo</span>
+                    <strong id="profile-name-detail">No registrado</strong>
+                </div>
+                <div class="profile-detail">
+                    <span>Correo electrónico</span>
+                    <strong id="profile-email-detail">No registrado</strong>
+                </div>
+                <div class="profile-detail">
+                    <span>Nombre de usuario</span>
+                    <strong id="profile-username-detail">No registrado</strong>
+                </div>
+                <div class="profile-detail">
+                    <span>Fecha de nacimiento</span>
+                    <strong id="profile-birth-detail">No registrada</strong>
+                </div>
+            </article>
+
+            <article class="profile-card">
+                <div class="profile-card-heading">
+                    <h2>Mi aprendizaje</h2>
+                    <span>📚</span>
+                </div>
+
+                <p class="learning-description">
+                    Continúa practicando matemáticas con actividades interactivas.
+                </p>
+
+                <div class="learning-item">
+                    <span class="learning-icon operations-icon">➕</span>
+                    <div>
+                        <strong>Operaciones Matemáticas</strong>
+                        <p id="profile-operations-progress">0 de 20 niveles</p>
+                    </div>
+                </div>
+
+                <div class="learning-item">
+                    <span class="learning-icon logic-icon">🧩</span>
+                    <div>
+                        <strong>Razonamiento Lógico</strong>
+                        <p id="profile-logic-progress">0 de 20 niveles</p>
+                    </div>
+                </div>
+
+                <div class="learning-item">
+                    <span class="learning-icon problems-icon">💡</span>
+                    <div>
+                        <strong>Solución de Problemas</strong>
+                        <p id="profile-problems-progress">0 de 20 niveles</p>
+                    </div>
+                </div>
+
+                <a class="profile-games-link" href="juegos.html">Ir a mis juegos →</a>
+            </article>
+        </section>
+
+        <section class="profile-card edit-profile-card" id="edit-profile-section" hidden>
+            <div class="profile-card-heading">
+                <div>
+                    <h2>Editar información</h2>
+                    <p>Personaliza cómo se muestra tu perfil. Los cambios se guardan únicamente en este navegador.</p>
+                </div>
+            </div>
+
+            <form id="profile-form">
+                <div class="profile-form-grid">
+                    <label>
+                        Nombre completo
+                        <input type="text" id="input-name" maxlength="80"
+                               placeholder="Escribe tu nombre" required>
+                    </label>
+
+                    <label>
+                        Nombre de usuario
+                        <input type="text" id="input-username" maxlength="30"
+                               placeholder="Elige un nombre de usuario" required>
+                    </label>
+
+                    <label>
+                        Correo electrónico
+                        <input type="email" id="input-email" maxlength="120"
+                               placeholder="ejemplo@correo.com">
+                    </label>
+
+                    <label>
+                        Fecha de nacimiento
+                        <input type="date" id="input-birth">
+                    </label>
+
+                    <label>
+                        Avatar
+                        <select id="input-avatar">
+                            <option value="😊">😊 Sonriente</option>
+                            <option value="🦊">🦊 Zorro</option>
+                            <option value="🐼">🐼 Panda</option>
+                            <option value="🐸">🐸 Rana</option>
+                            <option value="🦁">🦁 León</option>
+                            <option value="🐱">🐱 Gato</option>
+                            <option value="🐰">🐰 Conejo</option>
+                            <option value="🐻">🐻 Oso</option>
+                            <option value="🐵">🐵 Mono</option>
+                            <option value="🐨">🐨 Koala</option>
+                            <option value="🐯">🐯 Tigre</option>
+                            <option value="🐷">🐷 Cerdito</option>
+                            <option value="🐧">🐧 Pingüino</option>
+                            <option value="🦄">🦄 Unicornio</option>
+                            <option value="🐙">🐙 Pulpo</option>
+                            <option value="🐢">🐢 Tortuga</option>
+                            <option value="🐬">🐬 Delfín</option>
+                            <option value="🦋">🦋 Mariposa</option>
+                            <option value="⭐">⭐ Estrella</option>
+                            <option value="🚀">🚀 Cohete</option>
+                        </select>
+                    </label>
+                </div>
+
+                <p class="profile-form-message" id="profile-form-message" aria-live="polite"></p>
+
+                <div class="profile-form-actions">
+                    <button type="button" class="cancel-button" id="cancel-profile-button">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="save-profile-button">
+                        Guardar cambios
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <a href="configuracion.html" class="profile-settings-link">
+            ⚙️ Administrar preferencias de la aplicación
+        </a>
+    </main>
+</div>
+
+<script src="../js/app.js"></script>
+<script src="../js/perfil.js"></script>
+</body>
+</html>

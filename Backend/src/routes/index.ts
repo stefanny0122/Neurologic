@@ -2,6 +2,8 @@
 import { Router } from "express";
 
 import authRoutes from "./authRoutes.js";
+import usuariosRoutes from "./usuarioroutes.js";
+import minijuegosRoutes from "./minijuegoroutes.js";
 import partidasRoutes from "./partidaroutes.js";
 import resultadoRoutes from "./resultadoroutes.js";
 import progresoRoutes from "./progresoroutes.js";
@@ -9,8 +11,10 @@ import progresoRoutes from "./progresoroutes.js";
 const router = Router();
 
 router.use("/auth", authRoutes);
+router.use("/usuarios", usuariosRoutes);
+router.use("/minijuegos", minijuegosRoutes);
 router.use("/partidas", partidasRoutes);
-router.use("/resultados", resultadoRoutes);
+router.use("/resultado", resultadoRoutes);
 router.use("/progreso", progresoRoutes);
 
 export default router;

@@ -39,10 +39,14 @@ export async function iniciarSesion(
     throw new AppError(401, "Correo o contraseña incorrectos.");
   }
 
-  const contrasenaValida = await bcrypt.compare(
-    datos.password,
-    usuario.password_hash
-  );
+  if (!usuario.password_hash) {
+  throw new AppError(401, "Correo o contraseña incorrectos.");
+}
+
+const contrasenaValida = await bcrypt.compare(
+  datos.password,
+  usuario.password_hash
+);
 
   if (!contrasenaValida) {
     throw new AppError(401, "Correo o contraseña incorrectos.");

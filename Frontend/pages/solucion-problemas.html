@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solución de Problemas | NEUROLOGIC</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/minijuegos.css">
+    <link rel="stylesheet" href="../css/solucion-problemas.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">
+                    <img src="../assets/img/logo-neurologic.png" alt="Logo NEUROLOGIC">
+                </div>
+                <div class="brand-text">
+                    <h2>NEUROLOGIC</h2>
+                    <p>Aprender jugando</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="../index.html" class="nav-link">
+                    <span>⌂</span> Inicio
+                </a>
+                <a href="juegos.html" class="nav-link active">
+                    <span>🎮</span> Mis juegos
+                </a>
+                <a href="estadisticas.html" class="nav-link">
+                    <span>📊</span> Estadísticas
+                </a>
+                <a href="perfil.html" class="nav-link">
+                    <span>👤</span> Mi perfil
+                </a>
+                <a href="configuracion.html" class="nav-link">
+                    <span>⚙</span> Configuración
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>¡Cada reto es una oportunidad para aprender!</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                <div>
+                    <p class="breadcrumb">
+                        <a href="juegos.html">Mis juegos</a> / Solución de problemas
+                    </p>
+                    <h1>Solución de Problemas Matemáticos</h1>
+                    <p class="page-description">
+                        Lee, piensa y encuentra la solución correcta.
+                    </p>
+                </div>
+            </header>
+
+            <section class="game-welcome problem-welcome">
+                <div>
+                    <span class="welcome-tag">🧠 Reto matemático</span>
+                    <h2>¡Tú puedes resolverlo!</h2>
+                    <p>
+                        Analiza cada situación, identifica los datos y elige
+                        la respuesta correcta. Avanza a tu ritmo y acumula puntos.
+                    </p>
+                </div>
+                <div class="problem-illustration" aria-hidden="true">🧩</div>
+            </section>
+
+            <section class="level-section">
+                <div class="section-heading">
+                    <div>
+                        <h2>Selecciona un nivel</h2>
+                        <p>Completa las preguntas para practicar tus habilidades.</p>
+                    </div>
+                    <span class="level-counter" id="level-counter">Nivel 1 de 20</span>
+                </div>
+                <div class="level-list" id="level-list"></div>
+            </section>
+
+            <section class="game-stats">
+                <div class="stat-card">
+                    <span>🎯</span>
+                    <div>
+                        <p>Pregunta</p>
+                        <strong id="question-number">1 de 10</strong>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span>⭐</span>
+                    <div>
+                        <p>Puntos</p>
+                        <strong id="score-display">0</strong>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span>📈</span>
+                    <div>
+                        <p>Progreso</p>
+                        <strong id="progress-display">0%</strong>
+                    </div>
+                </div>
+            </section>
+
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-bar"></div>
+            </div>
+
+            <section class="question-panel" id="question-panel">
+                <div class="question-top">
+                    <span class="question-category" id="question-category">
+                        Problema matemático
+                    </span>
+                    <span class="question-points">+10 puntos por respuesta correcta</span>
+                </div>
+
+                <h2 id="question-text">Preparando tu primer reto...</h2>
+                <p class="question-help" id="question-help">
+                    Lee con atención y selecciona una respuesta.
+                </p>
+
+                <div class="problem-data" id="problem-data" hidden></div>
+                <div class="answer-options" id="answer-options"></div>
+                <div class="feedback" id="feedback" aria-live="polite"></div>
+
+                <button class="primary-button" id="next-button" disabled>
+                    Siguiente pregunta →
+                </button>
+            </section>
+
+            <section class="result-panel" id="result-panel" hidden>
+                <div class="result-icon" id="result-icon">🏆</div>
+                <h2 id="result-title">¡Nivel completado!</h2>
+                <p id="result-message"></p>
+
+                <div class="result-score">
+                    <span>Puntaje obtenido</span>
+                    <strong id="result-score">0 / 100</strong>
+                </div>
+
+                <div class="result-actions">
+                    <button class="secondary-button" id="retry-button">
+                        🔄 Repetir nivel
+                    </button>
+                    <button class="primary-button" id="continue-button">
+                        Siguiente nivel →
+                    </button>
+                </div>
+            </section>
+
+            <a class="back-link" href="juegos.html">← Volver a mis juegos</a>
+        </main>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/juego_api.js?v=2"></script>
+</body>
+</html>

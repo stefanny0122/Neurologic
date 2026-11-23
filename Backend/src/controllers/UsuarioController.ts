@@ -17,21 +17,13 @@ export async function registrar(
     });
   } catch (error) {
     if (error instanceof AppError) {
-      res.status(error.statusCode).json({
-        exitoso: false,
-        mensaje: error.message
-      });
+      res.status(error.statusCode).json({ exitoso: false, mensaje: error.message });
       return;
     }
-
     console.error("Error al registrar usuario:", error);
-    res.status(500).json({
-      exitoso: false,
-      mensaje: "No fue posible registrar el usuario."
-    });
+    res.status(500).json({ exitoso: false, mensaje: "No fue posible registrar el usuario." });
   }
 }
-
 export async function cambiarPassword(
   req: Request,
   res: Response
@@ -114,5 +106,30 @@ export async function perfil(
       exitoso: false,
       mensaje: "No fue posible consultar el perfil."
     });
+  }
+}
+export async function actualizarPerfil(
+  req: AuthRequest,
+  res: Response
+): Promise<void> {
+  try {
+    const id = req.usuarioAutenticado?.id;
+    if (!id) {
+      res.status(401).json({ exitoso: false, mensaje: "No se pudo identificar al usuario." });
+      return;
+    }
+    const usuario = await usuarioService.actualizarPerfil(id, req.body);
+    res.status(200).json({
+      exitoso: true,
+      mensaje: "Perfil actualizado correctamente.",
+      usuario
+    });
+  } catch (error) {
+    if (error instanceof AppError) {
+      res.status(error.statusCode).json({ exitoso: false, mensaje: error.message });
+      return;
+    }
+    console.error("Error al actualizar perfil:", error);
+    res.status(500).json({ exitoso: false, mensaje: "No fue posible actualizar el perfil." });
   }
 }

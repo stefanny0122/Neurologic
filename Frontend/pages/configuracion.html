@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración | NEUROLOGIC</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/configuracion.css">
+</head>
+<body>
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">
+                <img src="../assets/img/logo-neurologic.png" alt="Logo NEUROLOGIC">
+            </div>
+            <div class="brand-text">
+                <h2>NEUROLOGIC</h2>
+                <p>Aprender jugando</p>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="../index.html" class="nav-link"><span>⌂</span> Inicio</a>
+            <a href="juegos.html" class="nav-link"><span>🎮</span> Mis juegos</a>
+            <a href="estadisticas.html" class="nav-link"><span>📊</span> Estadísticas</a>
+            <a href="perfil.html" class="nav-link"><span>👤</span> Mi perfil</a>
+            <a href="configuracion.html" class="nav-link active"><span>⚙</span> Configuración</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>¡Cada reto es una oportunidad para aprender!</p>
+        </div>
+    </aside>
+
+    <main class="main-content settings-page">
+        <header class="settings-header">
+            <span class="settings-eyebrow">PERSONALIZA TU EXPERIENCIA</span>
+            <h1>Configuración</h1>
+            <p>Ajusta NEUROLOGIC a tus preferencias.</p>
+        </header>
+
+        <section class="settings-welcome">
+            <div>
+                <h2>¡Un espacio a tu medida!</h2>
+                <p>Configura la apariencia y las preferencias de tus actividades.</p>
+            </div>
+            <span aria-hidden="true">🎨</span>
+        </section>
+
+        <form id="settings-form">
+            <section class="settings-card">
+                <div class="settings-card-heading">
+                    <span class="settings-heading-icon">🎨</span>
+                    <div>
+                        <h2>Apariencia</h2>
+                        <p>Personaliza cómo se ve la aplicación.</p>
+                    </div>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-description">
+                        <strong>Tema oscuro</strong>
+                        <p>Utiliza fondos oscuros para reducir el brillo de la interfaz.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="dark-mode">
+                        <span class="switch-slider"></span>
+                        <span class="sr-only">Activar tema oscuro</span>
+                    </label>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-description">
+                        <strong>Tamaño del texto</strong>
+                        <p>Ajusta el tamaño del texto para facilitar la lectura.</p>
+                    </div>
+                    <select id="font-size" class="setting-select">
+                        <option value="normal">Normal</option>
+                        <option value="large">Grande</option>
+                        <option value="larger">Muy grande</option>
+                    </select>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-description">
+                        <strong>Animaciones</strong>
+                        <p>Activa o reduce las transiciones visuales de la interfaz.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="animations" checked>
+                        <span class="switch-slider"></span>
+                        <span class="sr-only">Activar animaciones</span>
+                    </label>
+                </div>
+            </section>
+
+            <section class="settings-card">
+                <div class="settings-card-heading">
+                    <span class="settings-heading-icon">🔊</span>
+                    <div>
+                        <h2>Experiencia de juego</h2>
+                        <p>Configura algunas preferencias de las actividades.</p>
+                    </div>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-description">
+                        <strong>Efectos de sonido</strong>
+                        <p>Preferencia para los sonidos de las actividades compatibles.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="sound-effects">
+                        <span class="switch-slider"></span>
+                        <span class="sr-only">Activar efectos de sonido</span>
+                    </label>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-description">
+                        <strong>Mostrar retroalimentación</strong>
+                        <p>Permite mostrar mensajes después de responder una pregunta.</p>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="feedback-messages" checked>
+                        <span class="switch-slider"></span>
+                        <span class="sr-only">Mostrar retroalimentación</span>
+                    </label>
+                </div>
+            </section>
+
+            <section class="settings-card">
+                <div class="settings-card-heading">
+                    <span class="settings-heading-icon">💾</span>
+                    <div>
+                        <h2>Datos de la aplicación</h2>
+                        <p>Administra los datos almacenados localmente en este navegador.</p>
+                    </div>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-description">
+                        <strong>Restablecer preferencias</strong>
+                        <p>Vuelve a la configuración visual y de juego predeterminada.</p>
+                    </div>
+                    <button type="button" class="secondary-action" id="reset-settings">
+                        Restablecer
+                    </button>
+                </div>
+
+                <div class="setting-row danger-row">
+                    <div class="setting-description">
+                        <strong>Borrar datos locales de NEUROLOGIC</strong>
+                        <p>
+                            Elimina el perfil, las preferencias y el progreso de los
+                            tres minijuegos guardados en este navegador.
+                        </p>
+                    </div>
+                    <button type="button" class="danger-action" id="clear-data">
+                        Borrar datos
+                    </button>
+                </div>
+            </section>
+
+            <div class="settings-actions">
+                <p id="settings-message" role="status" aria-live="polite"></p>
+                <button type="submit" class="save-settings-button">
+                    Guardar preferencias
+                </button>
+            </div>
+        </form>
+
+
+        <section class="settings-card password-card">
+            <div class="settings-card-heading">
+                <span class="settings-heading-icon">🔐</span>
+                <div>
+                    <h2>Seguridad de la cuenta</h2>
+                    <p>Cambia la contraseña de acceso a NEUROLOGIC.</p>
+                </div>
+            </div>
+            <form id="password-form" class="password-form">
+                <label for="password-current">Contraseña actual</label>
+                <input type="password" id="password-current" autocomplete="current-password" required>
+                <label for="password-new">Nueva contraseña</label>
+                <input type="password" id="password-new" minlength="8" autocomplete="new-password" required>
+                <label for="password-confirm">Confirmar nueva contraseña</label>
+                <input type="password" id="password-confirm" minlength="8" autocomplete="new-password" required>
+                <p id="password-message" class="password-message" role="status" aria-live="polite"></p>
+                <button type="submit" class="save-settings-button" id="password-submit">Actualizar contraseña</button>
+            </form>
+        </section>
+\n        <a href="../index.html" class="settings-back-link">← Volver al inicio</a>
+    </main>
+</div>
+
+<script src="../js/app.js"></script>
+<script src="../js/configuracion.js"></script>
+</body>
+</html>
